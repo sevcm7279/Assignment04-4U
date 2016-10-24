@@ -1,0 +1,14 @@
+set up board
+set up doctor
+set up daleks
+
+loop
+    get a click
+    ask the doctor to move
+    ask for dalek to move
+    CHECK FOR WIN OR LOSE
+        check for collisions with doctor and daleks
+
+// random
+
+int rand = (int)(Math.random()*12)
