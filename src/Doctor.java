@@ -29,12 +29,15 @@ public class Doctor {
 
     public void move(int newRow, int newCol) {
         // if the click was anywhere surrounding the doctor, move to that spot
-        if (col == newCol || col == (newCol + 1) || col == newCol - 1){
-            if (row == newRow || row == newRow + 1 || row == newRow - 1){
+        if (col == newCol || col == (newCol + 1) || col == newCol - 1) {
+            if (row == newRow || row == newRow + 1 || row == newRow - 1) {
                 row = newRow;
-            col = newCol;
+                col = newCol;
+            } else {
+                // if the click was far away form the doctor, randomize the coordinates
+                row = (int) (Math.random() * 12);
+                col = (int) (Math.random() * 12);
             }
-              
         } else {
             // if the click was far away form the doctor, randomize the coordinates
             row = (int) (Math.random() * 12);
@@ -43,14 +46,19 @@ public class Doctor {
 
     }
 
-   
-    
-
     public int getRow() {
         return this.row;
     }
 
     public int getCol() {
         return this.col;
+    }
+
+    public boolean isCollide(Dalek d0) {
+        if (this.row == d0.getRow() && this.col == d0.getCol()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
